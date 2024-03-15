@@ -2,14 +2,18 @@
 
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation'
 import Link from 'next/link';
 import { fetchProducts } from '@/store/reducers/paymentStore';
 import '../styles/checkoutPage.css';
 
 const CheckoutPage = () => {
     const dispatch = useDispatch();
-    const { products, isLoading }= useSelector((state) => state.paymentStore);
+    const router = useRouter();
+    const { products, isLoading, isError }= useSelector((state) => state.paymentStore);
+    const { background, foreground }= useSelector((state) => state.theme);
     const [discount, setDiscount] = React.useState('');
+    const [phoneNumber, setPhoneNumber] = React.useState('');
     const [totalAmount, setTotalAmount] = React.useState({
         total: 0,
         deliveryFee: 30,
@@ -45,29 +49,63 @@ const CheckoutPage = () => {
         
         }
     }
-    
+
+    const handlePhoneNumberChange = (e) => {
+        const newNumber = e.target.value;
+        const regExp = /[a-zA-Z]/g;
+
+        if (newNumber.length > 10) return;
+        if (regExp.test(newNumber)) return;
+
+        setPhoneNumber(newNumber)
+    }
+
+    const handlePaymentClick = () => {
+        if (!phoneNumber) return alert("Please enter a valid phone number");
+        if (phoneNumber.length < 10) return alert("Please enter a valid phone number");
+
+        router.push('/payment');
+    }
+
     if (isLoading) return (
-        <div style={{display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center', color: 'black'}}>
-            <div style={{width: '60vh', height: '80vh', background: 'white', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', overflow: 'scroll'}}>
+        <div className="main-container">
+            <div className="inner-checkout-container">
+                Loading...
                 <i class="ph ph-spinner"></i>
             </div>
         </div>
-    )
+    );
 
+    if (isError) return (
+        <div className="main-container" style={{backgroundColor: background}}>
+            <div className="inner-checkout-container secondary-page" style={{backgroundColor: foreground}}>
+                Something went wrong, please try again later.
+            </div>
+        </div>
+    );
+
+    if (products.length === 0) return (
+        <div className="main-container" style={{backgroundColor: background}}>
+            <div className="inner-checkout-container secondary-page" style={{backgroundColor: foreground}}>
+                No Product Found
+            </div>
+        </div>
+    );
 
     return (
-        <div className="main-container">
-            <div className="inner-checkout-container">
+        <div className="main-container" style={{backgroundColor: background}}>
+            <div className="inner-checkout-container" style={{backgroundColor: foreground}}>
                 <h2 className="main-heading">Checkout</h2>
                 <h3 >Delivery Detail</h3>
                 <div className= 'address-container'>
-                    <i class="ph ph-map-pin"></i>
+                    <i className="ph ph-map-pin"></i>
                     <p>15, Yemen Road, Yemen</p>
                 </div>
-                <input type="tel" placeholder="Phone Number" className="phone-input" />
+                <input type="tel" value={phoneNumber} onChange={handlePhoneNumberChange} placeholder="Phone Number" className="phone-input" />
 
                 <h4 className="small-heading">Order List</h4>
                 <table>
+                     <tbody>
                     {products.map((product) => (
                         <tr key={product.id} className="table-row">
                             <div className="product-details">
@@ -92,20 +130,21 @@ const CheckoutPage = () => {
                            
                         </tr>
                     ))}
+                    </tbody>
                 </table>
                 
                 <h4 className="small-heading">Promo Code</h4>
                 <div className="promocode-container">
                     <input type="text" value={discount} onChange={(event) => setDiscount(event.target.value)} placeholder="Enter Promo Code" className="promo-input" />
                     <div role='button' className="apply-box" onClick={handleDiscount}>APPLY</div>
-                    {
-                        discount && (
-                            <div>
-                                Promo applied
-                            </div>
-                        )
-                    }
                 </div>
+                {
+                     totalAmount.discount > 0 && (
+                        <div>
+                            Promo applied
+                        </div>
+                    )
+                }
 
                 <h3>Order Summary</h3>
                 <div className="order-summary">
@@ -128,11 +167,9 @@ const CheckoutPage = () => {
                         <h3 className="total-price">₹{totalAmount.total + totalAmount.deliveryFee - totalAmount.discount}</h3>
                     </div>
                     <div>
-                        <Link href="/payment">
-                        <div className="payment-button">
+                        <div className="payment-button" onClick={handlePaymentClick}>
                             Payment
                         </div>
-                        </Link>
                     </div>
                      
                 </div>

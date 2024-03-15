@@ -1,0 +1,11 @@
+.theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: darkseagreen;
+    color: black;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

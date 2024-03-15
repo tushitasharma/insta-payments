@@ -54,6 +54,16 @@
     border-radius: 0.5rem;
 }
 
+.method-box-active {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border: 1px #7D33FF solid;
+    border-radius: 0.5rem;
+
+}
+
 .method-container {
     display: flex;
     flex-direction: column;
