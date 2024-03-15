@@ -140,7 +140,7 @@ const CheckoutPage = () => {
                 </div>
                 {
                      totalAmount.discount > 0 && (
-                        <div>
+                        <div className="promocode-text">
                             Promo applied
                         </div>
                     )
@@ -162,7 +162,7 @@ const CheckoutPage = () => {
                     </div>
                 </div>
                 <div className="total-outer-container">
-                    <div className="total-container">
+                    <div className="total-checkout-container">
                         <p className="product-title">TOTAL</p>
                         <h3 className="total-price">₹{totalAmount.total + totalAmount.deliveryFee - totalAmount.discount}</h3>
                     </div>

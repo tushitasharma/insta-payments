@@ -11,13 +11,19 @@
     background-color: white;
     color: #6D6D6D;
     padding: 2.5rem 2rem;
-    width: 56vh;
+    width: 85vh;
     height: 90vh;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     overflow: scroll;
     justify-content: space-between;
+    margin-top: 4rem;
+}
+
+.promocode-text {
+    font-size: 0.8rem;
+    padding-left: 1rem;
 }
 
 .secondary-page {
@@ -143,7 +149,7 @@
     color: black;
 }
 
-.total-container {
+.total-checkout-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
