@@ -3,7 +3,6 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation'
-import Link from 'next/link';
 import { fetchProducts } from '@/store/reducers/paymentStore';
 import '../styles/checkoutPage.css';
 

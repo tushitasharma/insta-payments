@@ -1,12 +1,15 @@
 "use client";
 
 import React from "react";
-import { useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation'
+import {  useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { fetchProducts } from '@/store/reducers/paymentStore';
 import '../styles/paymentPage.css';
+
 
 const PaymentPage = () => {
     const router = useRouter();
+    const dispatch = useDispatch();
     const { paymentMethods, products }= useSelector((state) => state.paymentStore);
       const { background, foreground }= useSelector((state) => state.theme);
     const [paymentOption, setPaymentOption] = React.useState(null);
