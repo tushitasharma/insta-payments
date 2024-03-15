@@ -16,6 +16,10 @@ const PaymentPage = () => {
         total += product.price * product.quantity;
     });
 
+    React.useEffect(() => {
+        dispatch(fetchProducts());
+    }, []);
+
     const handlePaymentClick = () => {
         if (!paymentOption) return alert("Please select a payment method");
 
