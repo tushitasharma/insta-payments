@@ -1,0 +1,163 @@
+.main-container {
+    background-color: #7D33FF;
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-checkout-container {
+    background-color: white;
+    color: #6D6D6D;
+    padding: 2.5rem 2rem;
+    width: 56vh;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    overflow: scroll;
+    justify-content: space-between;
+}
+
+.address-container {
+    display: flex;
+    background: #E9E8EA;
+    padding: 0.5rem;
+    width: 14rem;
+    align-items: center;
+    gap: 0.5rem;
+    color: #818181;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.main-heading {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.table-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;   
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.product-image {
+    width: 3rem;
+    height: 3rem;
+}
+
+.product-details {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    width: 80%;
+    padding-left: 0.9rem;
+}
+
+.product-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.product-price {
+    font-size: 0.85rem;
+    font-weight: 250;
+}
+
+.promocode-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    border: 1px #E9E8EA solid;
+    padding: 5px 14px;
+    border-radius: 4px;
+}
+
+.apply-box {
+    color: #7D33FF;
+    cursor: 'pointer';
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.promo-input{
+    width: 14rem;
+    padding: 0.5rem;
+    background-color: white;
+    border: none;
+}
+
+.promo-input:focus {
+    border: none;
+    color: #6D6D6D;
+    outline: none;
+}
+
+.order-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1.2rem;
+}
+
+.summary-detail-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quantity.container {
+    display: flex;
+    gap: 1rem;
+}
+
+.payment-button {
+    display: flex;
+    justify-content: center;
+    background-color: #7D33FF;
+    padding: 1.2rem 3rem;
+    align-items: center;
+    height: 2rem;
+    margin-top: 1rem;
+    color: #E3E1E5;
+    font-size: 0.8rem;
+    border-radius: 3px;
+}
+
+.total-price {
+    padding-top: 1rem;
+    color: black;
+}
+
+.total-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.total-outer-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.phone-input {
+    padding: 0.5rem;
+    background-color: white;
+    border: 0.1rem solid #cfcdcd;
+    color: black;
+    border-radius: 4px;
+    padding-left: 1rem;
+}
+
+.small-heading {
+    padding-top: 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+

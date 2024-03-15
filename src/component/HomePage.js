@@ -2,12 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
+import '../styles/homePage.css';
+
 
 const HomePage = () => {
     return (
-      <div style={{display: 'flex', height: '100vh', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-        <div style={{backgroundColor: 'purple', padding: '5rem 10rem'}}>
-          <Link href="/checkout"><h1 style={{border: '0.1rem solid blue', padding: '1rem', color: 'red'}}>Place Order</h1></Link>
+      <div className='main-container'>
+        <div className='inner-container'>
+          <Link href="/checkout"><h1 className='main-heading'>Place Order</h1></Link>
         </div>
       </div>
     )

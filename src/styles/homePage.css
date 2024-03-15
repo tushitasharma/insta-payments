@@ -1,0 +1,22 @@
+.main-container {
+    background-color: #7D33FF;
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-container {
+    background-color: white;
+    color: black;
+    height: 90vh;
+    width: 56vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-heading {
+    padding: 1rem;
+}

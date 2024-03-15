@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useSelector } from 'react-redux';
+import '../styles/paymentPage.css';
 
 const PaymentPage = () => {
     const { paymentMethods, products }= useSelector((state) => state.paymentStore);
@@ -19,14 +20,14 @@ const PaymentPage = () => {
     }
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center', color: 'black'}}>
-            <div style={{width: '60vh', height: '80vh', background: 'white', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', overflow: 'scroll', justifyContent: 'space-between'}}>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                    <h2 style={{display: 'flex', justifyContent: 'center'}}>Payment</h2>
-                    <h4 style={{fontWeight: 'bold'}}>Choose Payment Method</h4>
-                    <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+        <div className="main-container">
+            <div className="inner-payment-container">
+                <div className="payment-container">
+                    <h2 className="main-heading">Payment</h2>
+                    <h3>Choose Payment Method</h3>
+                    <div className="method-container">
                         {paymentMethods.map((method, index) => (
-                            <div key={index} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', border: '0.1rem solid #ccc', borderRadius: '0.5rem'}}>
+                            <div key={index} className="method-box">
                                 <label htmlFor={index}>{method}</label>
                                 <input type="radio" value={paymentOption} onChange={(e) => setPaymentOption(e)} name="payment" id={method.id} />
                             </div>
@@ -34,11 +35,11 @@ const PaymentPage = () => {
                     </div>
                 </div>
                 <div>
-    `               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <h3>Total</h3>
-                        <p>₹{total + 30}</p>
+    `               <div className="total-container">
+                        <p >TOTAL</p>
+                        <h3 className="final-price">₹{total + 30}</h3>
                     </div>
-                    <div style={{display: 'flex', justifyContent: 'center', backgroundColor: 'purple', padding: '0.5rem 1rem', alignItems: 'center', height: '2rem', marginTop: '1rem'}} onClick={handlePaymentClick}>
+                    <div className="payment-button" onClick={handlePaymentClick}>
                         Make a Payment
                     </div>
                 </div>

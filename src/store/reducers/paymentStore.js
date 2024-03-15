@@ -22,8 +22,10 @@ export function fetchProducts() {
     try {
       const response = await fetch('https://groww-intern-assignment.vercel.app/v1/api/order-details');
       const data = await response.json();
-      localStorage.setItem('product-data', JSON.stringify(data));
-      localStorage.setItem('last-fetched', Date.now());
+      if(data.products.length > 0){
+        localStorage.setItem('product-data', JSON.stringify(data));
+        localStorage.setItem('last-fetched', Date.now());
+      }
       dispatch({ type: 'UPDATE_DATA', payload: data });
     } catch (error) {
       dispatch({ type: 'ERROR', payload: error });
