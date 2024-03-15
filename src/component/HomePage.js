@@ -1,19 +1,9 @@
 "use client";
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link'
-import { fetchProducts } from '@/store/reducers/paymentStore';
+import Link from 'next/link';
 
 const HomePage = () => {
-  const dispatch = useDispatch();
-  const { products, isLoading, paymentMethods }= useSelector((state) => state.paymentStore);
-
-  console.log('products', products, isLoading, paymentMethods);
-
-  React.useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
     return (
       <div style={{display: 'flex', height: '100vh', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
         <div style={{backgroundColor: 'purple', padding: '5rem 10rem'}}>

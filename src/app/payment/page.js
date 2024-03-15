@@ -1,7 +1,13 @@
+"use client";
+
 import PaymentPage from "@/component/PaymentPage";
+import { Provider } from 'react-redux';
+import store from '@/store/store';
 
 export default function Home() {
   return (
-    <PaymentPage />
+    <Provider store={store}>
+        <PaymentPage />
+    </Provider>
   );
 }
